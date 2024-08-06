@@ -20,7 +20,7 @@ Make sure you have the following software installed on your machine:
 1. **Clone the repository**
 
     ```sh
-    git clone https://your-username@bitbucket.org/blackmooninvestments/cm-whatsapp-outbound.git
+    git clone https://github.com/Rhegan/Mixer.git
     cd mixers
     ```
 

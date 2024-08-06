@@ -7,8 +7,12 @@ export default function IndexDrink({ logo }) {
     const [results, setResults] = useState([]);
     const letters =  Array.from({ length: 26 }, (_, i) => String.fromCharCode(65 + i));
     
-    const handleInputChange = async (e) => {
+    const handleChange = async (e) => {
         const value = e.target.value;
+        setQuery(value);
+    };
+    const handleSubmit = async (e) => {
+        const value = query;
         setQuery(value);
     
         if (value.length > 0) {
@@ -63,7 +67,7 @@ export default function IndexDrink({ logo }) {
 
                     <form className='w-full' autoComplete="off">
                         <label htmlFor="default-search" className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
-                        <div className="relative">
+                        <div className="relative w-full">
                             <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
                                 <svg 
                                     className="w-4 h-4 text-gray-500 dark:text-gray-400" 
@@ -76,15 +80,24 @@ export default function IndexDrink({ logo }) {
                                         d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
                                 </svg>
                             </div>
-                            <input 
-                                type="search" 
-                                id="default-search" 
-                                className="block w-full p-4 ps-10 text-2xl text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" 
-                                placeholder="Search your drink..." 
-                                value={ query }
-                                onChange={ handleInputChange }
-                                required />
+                            <div className='w-full'>
+                                <input 
+                                    type="search" 
+                                    id="default-search" 
+                                    className="w-full p-4 ps-10 text-2xl text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" 
+                                    placeholder="Search your drink..." 
+                                    value={ query }
+                                    onChange={ handleChange }
+                                    required />
+                                <button
+                                    className="absolute inset-y-0 end-0 z-[2] p-4 ps-10 text-2xl  text-gray-500 dark:text-gray-400"
+                                    type="button"
+                                    onClick={ handleSubmit }
+                                    id="submit">
+                                    Search
+                                </button>
                             </div>
+                        </div>
                     </form>
                 </div>
                 {query && <div className="w-9/12 flex flex-wrap justify-around">
